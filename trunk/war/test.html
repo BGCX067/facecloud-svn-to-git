@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Facecloud test page</title>
+<script src="facecloud.js"></script>
+
+<style type="text/css">
+    .cloud{float:left;background-color: orange; }
+    .cloudTag{ border: 1px solid black; }
+</style>
+
+</head>
+<body>
+<div><h1>Hello Facecloud!</h1></div>
+<div style="float:left; margin-right: 20px;"><h2>Left placeholder</h2></div><div id="slot"></div>
+<script>
+var data = new Array();
+
+var i = 0;
+var id = 100007512282426;
+for(;i < 100; i++){
+	var weight = 1;
+	if(i%2==0){
+		weight = 2;
+	}
+	if(i%3==0){
+		weight = 3;
+	}
+	if(i%4==0){
+		weight = 4;
+	}
+	if(i%5==0){
+		weight = 5;
+	}
+	data[i] = new CloudData(id, "Testuser"+i, weight);
+	id++;
+}
+
+var fc = new Facecloud(data);
+fc.setCloudWidth(400);
+fc.setCloudHeight(400);
+fc.setWeightMultiplicator(3);
+fc.setStyle("border: 1px solid black;");
+fc.setCssClass("cloud");
+fc.setRenderLinks(true);
+fc.render("slot");
+</script>
+
+</body>
+</html>
